@@ -1,5 +1,17 @@
 # etl-framework
 
+etl-framework continues as basis-job, a package of [basis](https://github.com/jacobragsdale/basis), which brought
+this repository in with its history, under `packages/job`. Development continues there, and new job repos start from a
+release of basis:
+
+```sh
+uvx --from 'git+https://github.com/jacobragsdale/basis@TAG#subdirectory=packages/job' basis-job new repo pricing-etl prices
+```
+
+`TAG` is one of [basis's releases](https://github.com/jacobragsdale/basis/releases), such as `v0.1.0`. In basis-job a
+job imports `basis.job as etl`, the `etl` command is `basis`, and settings are `BASIS_` variables, where `ETL_` ones
+are refused with their new names. etl-framework 0.1.0 stays installable from its tag, as below.
+
 The run loop that ETL jobs share. A job is a folder of plain Python whose `job.py` declares what it reads, what it
 writes and how, and transforms inputs to outputs in a pure function. etl-framework runs everything else the same way for
 every job: reading from SQL Server, Oracle and files, checking every output against its row and its destination
